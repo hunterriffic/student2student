@@ -41,23 +41,29 @@ public class DataManager {
     }
    
     private void createUser() {
-
+    		String tempName = null;
+    		User toAdd = new User(tempName);
+    		
     		System.out.println("Please enter the name of the User in the format: FirstnameLastname.");
         String name = scan.nextLine();
-        System.out.println(name);
+        //System.out.println(name);
        
-        System.out.println("Is this correct? Y/N");
+        System.out.println("Is " + name + " correct? Y/N");
         String inputContinue = scan.nextLine();
 
         if(inputContinue.toLowerCase().equals("y")) {
-			User toAdd = new User(name);
+        		System.out.println("if statement entered");
             toAdd.name = name;
-            users.add(toAdd);
-            Statement stmt = null;
+            System.out.println("changed name in toAdd");
+            //users.add(toAdd);
+            System.out.println("going to database");
+            //Statement stmt;
             String query = "INSERT INTO student2student.users (username, email, password, cell, major)\n" + 
             		"VALUES (" + toAdd.name + ")";
+            System.out.println("just before try");
             try {
-				stmt = Dbconnection.con.createStatement();
+				Statement stmt = Dbconnection.getConnection().createStatement();
+				System.out.println("passed through first stmt");
 				ResultSet rs = stmt.executeQuery(query);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
