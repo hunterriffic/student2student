@@ -14,45 +14,34 @@ import java.util.PriorityQueue;
 import java.util.ListIterator;
 
 public static class Search {
-    protected Node myRoot;
+    protected Tag root;
 
-    public Search(String[] terms) {
+    public Search(String[] tags) {
         if (terms == null)
             throw new NullPointerException("One or more arguments null");
         // Represent the root as a dummy/placeholder node
-        myRoot = new Node('-', null, 0);
+        root = new Tag("", 0, null);
 
-        for (int i = 0; i < terms.length; i++) {
-            add(terms[i], weights[i]);
+        for (int i = 0; i < tags.length; i++) {
+            add(tags[i]);
         }
     }
 
-    private void add(String word, double weight) {
-        // TODO: Implement add
-        if (word == null) { //Checking if word is null
+    private void add(Tag input) {
+        if (input == null) { //Checking if tag is null
             throw new NullPointerException();
         }
-        if (weight < 0) { //Checking if weight is negative
-            throw new IllegalArgumentException();
+        Tag cur = root;
+        for (int i = 0; i < input.level; i++) { //Iterating through the tree
+            cur = cur.getChild(input.name); //Increments current tag
         }
-        Node cur = myRoot;
-        for (int i = 0; i < word.length(); i++) { //Iterating through the word
-            char c = word.charAt(i); //Current letter
-            if (cur.getChild(c) == null) { //Checking to see if cur has the specified letter
-                Node n = new Node(c, cur, weight); //If it doesn't, create a new node with that letter
-                cur.children.put(c, n); //And add it as a child
-            }
-            if (weight > cur.mySubtreeMaxWeight) { //Checking if given weight is greater than the current max weight
-                cur.mySubtreeMaxWeight = weight; //If so, updates max weight to given weight
-            }
-            cur = cur.getChild(c); //Increments current node
+        if (cur.getChild(name) == null) { //Checking to see if cur has the specified tag
+            Tag t = new Tag(input.name, input.level, cur)//Creating new tag
+            cur.children.put(input.name, t); //And add it as a child
         }
-        cur.isWord = true; //Current node is currently at deepest position, so it is a word
-        cur.myWord = word; //Sets the word
-        cur.myWeight = weight; //Sets the weight
     }
 
-    public Iterable<String> topMatches(String prefix, int k) {
+    public Iterable<String> getMatches(String name) {
         // TODO: Implement topKMatches
         if (prefix == null) { throw new NullPointerException(); } //Checking if prefix is null
         else {
