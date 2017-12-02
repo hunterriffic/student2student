@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Entry {
-    private String entryName;
+    String entryName;
     private String description;
     private User creator;
     private ArrayList<Tag> tags = new ArrayList<Tag>();

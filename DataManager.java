@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class DataManager {
 	ArrayList<User> users;
+	ArrayList<Entry> entries;
 
     Scanner scan = new Scanner(System.in);
 
@@ -27,7 +28,7 @@ public class DataManager {
 
         switch (scan.nextLine()) {
             case "1" : createUser(); break;
-//            case "2" : createEntry(); break;
+            case "2" : createEntry(); break;
 //            case "3" : updateEntryTags(); break;
 //            case "4" : viewAllUsers(); break;
 //            case "5" : viewAllEntries(); break;
@@ -49,8 +50,7 @@ public class DataManager {
         String inputContinue = scan.nextLine();
 
         if(inputContinue.toLowerCase().equals("y")) {
-            ArrayList<Tag> tempTags = null;
-			User toAdd = new User(name, tempTags);
+			User toAdd = new User(name);
             toAdd.name = name;
             users.add(toAdd);
             Statement stmt = null;
@@ -67,7 +67,7 @@ public class DataManager {
 
         }
         else {
-            System.out.println("Do you want to retry creating a new member? Y/N");
+            System.out.println("Do you want to retry creating a new user? Y/N");
             String inputCont2 = scan.nextLine();
             if(inputCont2.toLowerCase().equals("y")) {
                 createUser();
@@ -80,23 +80,38 @@ public class DataManager {
     
     private void createEntry() {
 		System.out.println("Please enter the name of the Entry without spaces.");
-		// delimiter here pls
         String name = scan.nextLine();
         System.out.println("Please enter a brief description of this entry.");
         String description = scan.nextLine();
+        System.out.println("Please enter the name of the creator in the format: FirstnameLastname");
+        String creatorName = scan.nextLine();
         
-        System.out.println(name);
+        String tempName = null;
+        
+        User creator = new User(tempName);
+        int userIndex = users.indexOf(creatorName);
+        if (userIndex != -1) {
+        		creator = users.get(userIndex);
+        }
+        else {
+        		System.out.println("User not found. Please try again.");
+        		
+        }
+        
+        System.out.println(name + " | ");
+        System.out.println(description + " | " + creator.getName());
+        
         System.out.println("Is this correct? Y/N");
         String inputContinue = scan.nextLine();
 
         if(inputContinue.toLowerCase().equals("y")) {
             ArrayList<Tag> tempTags = null;
-			User toAdd = new User(name, tempTags);
-            toAdd.name = name;
-            users.add(toAdd);
+			Entry toAdd = new Entry(name, description, creator, tempTags);
+            toAdd.entryName = name;
+            entries.add(toAdd);
             Statement stmt = null;
-            String query = "INSERT INTO student2student.users (username, email, password, cell, major)\n" + 
-            		"VALUES (" + toAdd.name + ")";
+            String query = "INSERT INTO student2student.entries (name, description, creator)\n" + 
+            		"VALUES (" + toAdd.entryName + ")";
             try {
 				stmt = Dbconnection.con.createStatement();
 				ResultSet rs = stmt.executeQuery(query);
