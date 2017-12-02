@@ -35,15 +35,16 @@ public class Tag implements Comparable<Tag> {
         return children.get(name);
     }
 
-//    @Override
-//    public int compareTo(Tag t) {
-//        // Sort in weight ascending
-//        if (this.myWeight < o.myWeight) {
-//            return -1;
+    @Override
+    public int compareTo(Tag t) {
+        // Sort in weight ascending
+        // if (t) {
+//            return -1 ;
 //        } else if (this.myWeight > o.myWeight) {
 //            return 1;
 //        } else {
 //            return 0;
 //        }
-//    }
+        return 0;
+    }
 }
