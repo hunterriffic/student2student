@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import javax.swing.SwingUtilities;
 
 public class Driver {
 
@@ -31,6 +32,12 @@ public class Driver {
                 //terminal.start();
                 userSelection = -1;
 
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        new AutocompleteGUI(10).setVisible(true);
+                    }
+                });
+
             }
             else if( userSelection == 2) {
                 // start browsing projects
@@ -55,5 +62,9 @@ public class Driver {
                 System.out.println("ERROR: That was not a valid selection. Please try again.");
             }
         }
+<<<<<<< HEAD
     }
 }
+=======
+    }
+>>>>>>> b31c993546d9814ec8829f71cade09578ede3f1a
