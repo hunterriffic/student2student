@@ -18,7 +18,7 @@ public class Driver {
             System.out.println("       1: Browse Jobs                           ");
             System.out.println("       2: Browse Projects                       ");
             System.out.println("       3: Browse Clubs                          ");
-            System.out.println("       4: Manage Tags                           ");
+            System.out.println("       4: Manage Data                           ");
             System.out.println("       -1: Quit                                 ");
 
             userSelection = scan.nextInt();
@@ -47,8 +47,8 @@ public class Driver {
                 System.out.println("Thank you for using Student2Student!");
             }
             else if(userSelection == 4) {
-                // manage tags
-                System.out.println("Opening tag manager...");
+                // manage tags and users
+                System.out.println("Opening data manager...");
             }
             else {
                 userSelection = -1;
@@ -56,3 +56,4 @@ public class Driver {
             }
         }
     }
+}

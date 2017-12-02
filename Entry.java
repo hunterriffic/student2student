@@ -1,31 +1,33 @@
+import java.util.ArrayList;
+
 public class Entry {
     private String entryName;
     private String description;
     private User creator;
-}
+    private ArrayList<Tag> tags = new ArrayList<Tag>();
+
 
 // constructs an Entry
-public Entry(String entryName, String description, User creator) {
+public Entry(String entryName, String description, User creator, ArrayList<Tag> tags) {
     this.entryName = entryName;
     this.description = description;
     this.creator = creator;
-    private static ArrayList<Tag> tags = new ArrayList<Tag>();
+    this.tags = tags;
+}
+    
 
 public void AddTag(Tag tagToAdd) {
     // add tag to entry based on array index
-        for (int i = 0; i < tags.size(); i++) {
-            if (tagToAdd.getName == tags(i).getName) {
-                System.out.println("Tag already added");
-                return;
-            }
-        }
-        //int size = tags.size();
-        tags.add(tagToAdd);
-        System.out.println(tagToAdd.getName + " successfully added");
+	 	if (tags.contains(tagToAdd)) return;
+	
+		tags.add(tagToAdd);
+        System.out.println(tagToAdd.getName() + " successfully added");
         return;
 }
 
 public void RemoveTag(Tag tagToRemove) {
         tags.remove(tagToRemove);
         return;
+}
+
 }

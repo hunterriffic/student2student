@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class User {
-    private String name; 
-    private ArrayList<Tag> tags;
+    String name; 
+    ArrayList<Tag> tags;
     
 // Constructs a User
 	public User(String name, ArrayList<Tag> tags) {
