@@ -32,21 +32,21 @@ public class Driver {
                 //terminal.start();
                 userSelection = -1;
 
-<<<<<<< HEAD
+
 //                SwingUtilities.invokeLater(new Runnable() {
 //                    public void run() {
 //                        new AutocompleteGUI(10).setVisible(true);
 //                    }
 //                });
 //
-=======
+
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         new SearchGUI(10).setVisible(true);
                     }
                 });
 
->>>>>>> 1046c2181fbae912709190b5b2c9c05cfd4aa5e6
+
             }
             else if( userSelection == 2) {
                 // start browsing projects
@@ -74,10 +74,4 @@ public class Driver {
         }
      }
 }
-//<<<<<<< HEAD
-//    }
-//}
-//
-//=======
-//    }
-//>>>>>>> b31c993546d9814ec8829f71cade09578ede3f1a
+
