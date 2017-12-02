@@ -14,13 +14,13 @@ public class Driver {
             System.out.println("Welcome to Student2Student!");
 
 
-            System.out.println(" Please enter the number of your selection.     ");
-            System.out.println("    Menu :                                      ");
-            System.out.println("       1: Browse Jobs                           ");
-            System.out.println("       2: Browse Projects                       ");
-            System.out.println("       3: Browse Clubs                          ");
-            System.out.println("       4: Manage Data                           ");
-            System.out.println("       -1: Quit                                 ");
+            System.out.println("Please enter the number of your selection.");
+            System.out.println("\tMenu :");
+            System.out.println("\t\t1: Browse Jobs");
+            System.out.println("\t\t2: Browse Projects");
+            System.out.println("\t\t3: Browse Clubs");
+            System.out.println("\t\t4: Manage Data");
+            System.out.println("\t\t-1: Quit");
 
             userSelection = scan.nextInt();
 
@@ -32,12 +32,21 @@ public class Driver {
                 //terminal.start();
                 userSelection = -1;
 
+<<<<<<< HEAD
 //                SwingUtilities.invokeLater(new Runnable() {
 //                    public void run() {
 //                        new AutocompleteGUI(10).setVisible(true);
 //                    }
 //                });
 //
+=======
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        new SearchGUI(10).setVisible(true);
+                    }
+                });
+
+>>>>>>> 1046c2181fbae912709190b5b2c9c05cfd4aa5e6
             }
             else if( userSelection == 2) {
                 // start browsing projects
