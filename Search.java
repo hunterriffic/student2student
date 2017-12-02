@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.PriorityQueue;
 import java.util.ListIterator;
 
-public static class Search {
+public class Search {
     protected Tag root;
     ArrayList<User> users = new ArrayList<>();
 

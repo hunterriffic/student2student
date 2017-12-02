@@ -61,7 +61,7 @@ public class SearchGUI extends JFrame {
         content.setLayout(layout);
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
-//        final AutocompletePanel ap = new AutocompletePanel(fileName);
+        final SearchPanel ap = new SearchPanel();//fileName);
         JButton searchButton = new JButton("Do Something");
         // searchButton.setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
         searchButton.addMouseListener(new MouseListener() {
@@ -107,7 +107,7 @@ public class SearchGUI extends JFrame {
 
     private class SearchPanel extends JPanel {
         private final JTextField searchText;
-        private Search.Search search;//Autocomplete.Autocompletor auto;
+        //private Search.Search search;//Autocomplete.Autocompletor auto;
         private String[] results = new String[k];
         private JList<String> suggestions;
 
@@ -137,13 +137,16 @@ public class SearchGUI extends JFrame {
 //                auto = (Autocomplete.Autocompletor) Class.forName(autocompletorClassName)
 //                        .getDeclaredConstructor(String[].class, double[].class).newInstance(terms, weights);
 
-            } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException
-                    | InvocationTargetException | NoSuchMethodException | SecurityException e1) {
-                e1.printStackTrace();
-                System.exit(1);
-            } catch (FileNotFoundException e2) {
-                System.out.println("Cannot read file " + filename);
-                System.exit(1);
+            } //catch (InstantiationException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException
+            //      | InvocationTargetException | NoSuchMethodException | SecurityException e1) {
+//                 e1.printStackTrace();
+//                 System.exit(1);
+//             } catch (FileNotFoundException e2) {
+//                 //System.out.println("Cannot read file " + filename);
+//                 System.exit(1);
+//
+//             }
+            catch (Exception e) {
 
             }
 
@@ -307,10 +310,10 @@ public class SearchGUI extends JFrame {
                 int textLen = text.length();
                 Queue<String> resultQ = new LinkedList<String>();
                 Queue<Double> ds = new LinkedList<Double>();
-                for (String term : auto.topMatches(text.toLowerCase(), k)) {
-                    resultQ.add(term);
-                    ds.add(auto.weightOf(term));
-                }
+                // for (String term : auto.topMatches(text.toLowerCase(), k)) {
+//                     resultQ.add(term);
+//                     ds.add(auto.weightOf(term));
+//                 }
                 if (!resultQ.isEmpty()) {
                     results = new String[resultQ.size()];
                     for (int i = 0; i < results.length; i++) {
