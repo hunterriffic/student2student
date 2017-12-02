@@ -5,7 +5,7 @@ public class Dbconnection {
     private static String driverName = "com.mysql.jdbc.Driver";
     private static String username = "wareagle";
     private static String password = "rolltide";
-    private static Connection con;
+    static Connection con;
     private static String urlstring;
 
     public static Connection getConnection() {

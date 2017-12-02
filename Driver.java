@@ -32,12 +32,12 @@ public class Driver {
                 //terminal.start();
                 userSelection = -1;
 
-                SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        new AutocompleteGUI(10).setVisible(true);
-                    }
-                });
-
+//                SwingUtilities.invokeLater(new Runnable() {
+//                    public void run() {
+//                        new AutocompleteGUI(10).setVisible(true);
+//                    }
+//                });
+//
             }
             else if( userSelection == 2) {
                 // start browsing projects
@@ -56,15 +56,19 @@ public class Driver {
             else if(userSelection == 4) {
                 // manage tags and users
                 System.out.println("Opening data manager...");
+                DataManager manager = new DataManager();
             }
             else {
                 userSelection = -1;
                 System.out.println("ERROR: That was not a valid selection. Please try again.");
             }
         }
-<<<<<<< HEAD
-    }
+     }
 }
-=======
-    }
->>>>>>> b31c993546d9814ec8829f71cade09578ede3f1a
+//<<<<<<< HEAD
+//    }
+//}
+//
+//=======
+//    }
+//>>>>>>> b31c993546d9814ec8829f71cade09578ede3f1a

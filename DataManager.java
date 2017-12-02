@@ -1,3 +1,4 @@
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,23 +17,21 @@ public class DataManager {
 
         System.out.println("Welcome to the Data Manager!");
         	System.out.println("Menu: ");
-        System.out.println("   1: Create New User");
-        System.out.println("   2: Update User Tags");
-        System.out.println("   3: Create New Entry");
-        System.out.println("   4: Update Entry Tags");
-        System.out.println("   5: View all users");
-        System.out.println("   6: View all entries");
-        System.out.println("   7: View all tags");
-        System.out.println("   -1: Quit");
+        System.out.println("	1: Create New User");
+        System.out.println("	2: Create New Entry");
+        System.out.println("	3: Update Entry Tags");
+        System.out.println("	4: View all users");
+        System.out.println("	5: View all entries");
+        System.out.println("	6: View all tags");
+        System.out.println("	-1: Quit");
 
         switch (scan.nextLine()) {
             case "1" : createUser(); break;
-            case "2" : updateUserTags(); break;
-            case "3" : createEntry(); break;
-            case "4" : updateEntryTags(); break;
-            case "5" : viewAllUsers(); break;
-            case "6" : viewAllEntries(); break;
-            case "7" : viewAllTags(); break;
+//            case "2" : createEntry(); break;
+//            case "3" : updateEntryTags(); break;
+//            case "4" : viewAllUsers(); break;
+//            case "5" : viewAllEntries(); break;
+//            case "6" : viewAllTags(); break;
             case "-1" : keepRunning = false; break;
             default: ;
         }
@@ -54,6 +53,16 @@ public class DataManager {
 			User toAdd = new User(name, tempTags);
             toAdd.name = name;
             users.add(toAdd);
+            Statement stmt = null;
+            String query = "INSERT INTO student2student.users (username, email, password, cell, major)\n" + 
+            		"VALUES (" + toAdd.name + ")";
+            try {
+				stmt = Dbconnection.con.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             System.out.println("New User created.");
 
         }
@@ -69,13 +78,45 @@ public class DataManager {
         }
     }
     
-    private void updateUserTags() {
-    		System.out.println("Enter the name of the User to change in format: FirstnameLastname.");
-    		String name = scan.nextLine();
-    		System.out.println(name);
-    		
-    		System.out.println("Is this correct? Y/N");
+    private void createEntry() {
+		System.out.println("Please enter the name of the Entry without spaces.");
+		// delimiter here pls
+        String name = scan.nextLine();
+        System.out.println("Please enter a brief description of this entry.");
+        String description = scan.nextLine();
+        
+        System.out.println(name);
+        System.out.println("Is this correct? Y/N");
         String inputContinue = scan.nextLine();
+
+        if(inputContinue.toLowerCase().equals("y")) {
+            ArrayList<Tag> tempTags = null;
+			User toAdd = new User(name, tempTags);
+            toAdd.name = name;
+            users.add(toAdd);
+            Statement stmt = null;
+            String query = "INSERT INTO student2student.users (username, email, password, cell, major)\n" + 
+            		"VALUES (" + toAdd.name + ")";
+            try {
+				stmt = Dbconnection.con.createStatement();
+				ResultSet rs = stmt.executeQuery(query);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            System.out.println("New User created.");
+
+        }
+        else {
+            System.out.println("Do you want to retry creating a new member? Y/N");
+            String inputCont2 = scan.nextLine();
+            if(inputCont2.toLowerCase().equals("y")) {
+                createUser();
+            }
+            else {
+                mainMenu();
+            }
+        }
     		
     }
 }
