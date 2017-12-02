@@ -1,30 +1,18 @@
 import java.util.ArrayList;
 
 public class User {
-    String name; 
-    ArrayList<Tag> tags;
+    String name;
     
 // Constructs a User
-	public User(String name, ArrayList<Tag> tags) {
+	public User(String name) {
 		this.name = name;
-		this.tags = tags;
 	}
 
-    public void addTag(Tag tagToAdd) {
-        // add tag to entry based on array index
-        if (tags.contains(tagToAdd)) return;
-      
-        tags.add(tagToAdd);
-        System.out.println(tagToAdd.getName() + " successfully added");
-        return;
+    public void setName(String nameIn) {
+	    name = nameIn;
     }
 
-    public void removeTag(Tag tagToRemove) {
-        tags.remove(tagToRemove);
-        return;
+    public String getName() {
+	    return name;
     }
-    
-    public ArrayList<Tag> returnTag() {
-    		return tags;
-    	}
 }

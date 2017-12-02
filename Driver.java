@@ -14,13 +14,13 @@ public class Driver {
             System.out.println("Welcome to Student2Student!");
 
 
-            System.out.println(" Please enter the number of your selection.     ");
-            System.out.println("    Menu :                                      ");
-            System.out.println("       1: Browse Jobs                           ");
-            System.out.println("       2: Browse Projects                       ");
-            System.out.println("       3: Browse Clubs                          ");
-            System.out.println("       4: Manage Data                           ");
-            System.out.println("       -1: Quit                                 ");
+            System.out.println("Please enter the number of your selection.");
+            System.out.println("\tMenu :");
+            System.out.println("\t\t1: Browse Jobs");
+            System.out.println("\t\t2: Browse Projects");
+            System.out.println("\t\t3: Browse Clubs");
+            System.out.println("\t\t4: Manage Data");
+            System.out.println("\t\t-1: Quit");
 
             userSelection = scan.nextInt();
 
@@ -34,7 +34,7 @@ public class Driver {
 
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        new AutocompleteGUI(10).setVisible(true);
+                        new SearchGUI(10).setVisible(true);
                     }
                 });
 
